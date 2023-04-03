@@ -16,12 +16,22 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
-
+    
     Rta/
     214
 
     """
-    return
+    # ejercicio numero 1
+    def leer_archivo(file_name):
+        with open(file_name, "r") as f:
+            lines = f.readlines()
+            lines=[line.replace('\n','')for line in lines]
+        return [line.split("\t") for line in lines]
+    informacion=leer_archivo("data.csv")
+    contador=0
+    for i in range(0,len(informacion)):
+        contador+=int(informacion[i][1])
+    return contador
 
 
 def pregunta_02():
@@ -39,7 +49,26 @@ def pregunta_02():
     ]
 
     """
-    return
+    # ejercicio numero 2
+    def leer_archivo(file_name):
+        with open(file_name, "r") as f:
+            lines = f.readlines()
+            lines=[line.replace('\n','')for line in lines]
+        return [line.split("\t") for line in lines]
+    informacion=leer_archivo("data.csv")
+    lista=list()
+    contador=0
+    for i in range(0,len(informacion)):
+        lista.append(informacion[i][0])
+    elementos=sorted(set(lista))
+    auxiliar_2=list()
+    for i in elementos:
+        contador=0
+        for j in range(0,len(informacion)):
+            if i==informacion[j][0]:
+                contador+=1
+        auxiliar_2.append((i,contador))
+    return [auxiliar_2[index] for index in range(0,len(auxiliar_2))]
 
 
 def pregunta_03():
@@ -57,7 +86,26 @@ def pregunta_03():
     ]
 
     """
-    return
+    # ejercicio numero 3
+    def leer_archivo(file_name):
+        with open(file_name, "r") as f:
+            lines = f.readlines()
+            lines=[line.replace('\n','')for line in lines]
+        return [line.split("\t") for line in lines]
+    informacion=leer_archivo("data.csv")
+    lista=list()
+    contador=0
+    for i in range(0,len(informacion)):
+        lista.append(informacion[i][0])
+    elementos=sorted(set(lista))
+    auxiliar_2=list()
+    for i in elementos:
+        contador=0
+        for j in range(0,len(informacion)):
+            if i==informacion[j][0]:
+                contador+=int(informacion[j][1])
+        auxiliar_2.append((i,contador))
+    return auxiliar_2
 
 
 def pregunta_04():
@@ -82,7 +130,26 @@ def pregunta_04():
     ]
 
     """
-    return
+    # ejercicio numero 4
+    def leer_archivo(file_name):
+        with open(file_name, "r") as f:
+            lines = f.readlines()
+            lines=[line.replace('\n','')for line in lines]
+        return [line.split("\t") for line in lines]
+    informacion=leer_archivo("data.csv")
+    lista=list()
+    contador=0
+    for i in range(0,len(informacion)):
+        lista.append(informacion[i][2][5:7])
+    elementos=sorted(set(lista))
+    auxiliar_2=list()
+    for i in elementos:
+        contador=0
+        for j in range(0,len(informacion)):
+            if i==informacion[j][2][5:7]:
+                contador+=1
+        auxiliar_2.append((i,contador))
+    return auxiliar_2
 
 
 def pregunta_05():
@@ -100,7 +167,26 @@ def pregunta_05():
     ]
 
     """
-    return
+    # ejercicio numero 5
+    def leer_archivo(file_name):
+        with open(file_name, "r") as f:
+            lines = f.readlines()
+            lines=[line.replace('\n','')for line in lines]
+        return [line.split("\t") for line in lines]
+    informacion=leer_archivo("data.csv")
+    lista=list()
+    contador=0
+    for i in range(0,len(informacion)):
+        lista.append(informacion[i][0])
+    elementos=sorted(set(lista))
+    auxiliar_2=list()
+    for i in elementos:
+        auxiliar=list()
+        for j in range(0,len(informacion)):
+            if i==informacion[j][0]:
+                auxiliar.append(int(informacion[j][1]))
+        auxiliar_2.append((i,max(auxiliar),min(auxiliar)))
+    return auxiliar_2
 
 
 def pregunta_06():
@@ -125,7 +211,29 @@ def pregunta_06():
     ]
 
     """
-    return
+    # ejercicio numero 6
+    def leer_archivo(file_name):
+        with open(file_name, "r") as f:
+            lines = f.readlines()
+            lines=[line.replace('\n','')for line in lines]
+        return [line.split("\t") for line in lines]
+    informacion=leer_archivo("data.csv")
+    lista_2=list()
+    contador=list()
+    for k in range(0,len(informacion)):
+        lista=[informacion[k][4].replace(',',':').split(':')[index] for index in range(0,len(informacion[k][4].replace(',',':').split(':')),2)]
+        for i in range(0,len(lista)):
+            lista_2.append(lista[i])
+    elementos=sorted(set(lista_2))
+    auxiliar_2=list()
+    for k in elementos:
+        auxiliar=list()
+        for j in range(0,len(informacion)):
+            lista=informacion[j][4].replace(',',':').split(':')
+            if k in lista:
+                auxiliar.append(int(lista[lista.index(k)+1]))
+        auxiliar_2.append((k,min(auxiliar),max(auxiliar)))
+    return auxiliar_2
 
 
 def pregunta_07():
@@ -149,7 +257,26 @@ def pregunta_07():
     ]
 
     """
-    return
+    # ejercicio numero 7
+    def leer_archivo(file_name):
+        with open(file_name, "r") as f:
+            lines = f.readlines()
+            lines=[line.replace('\n','')for line in lines]
+        return [line.split("\t") for line in lines]
+    informacion=leer_archivo("data.csv")
+    lista=list()
+    contador=0
+    for i in range(0,len(informacion)):
+        lista.append(informacion[i][1])
+    elementos=sorted(set(lista))
+    auxiliar_2=list()
+    for g in elementos:
+        auxiliar=list()
+        for j in range(0,len(informacion)):
+            if g==informacion[j][1]:
+                auxiliar.append(informacion[j][0])
+        auxiliar_2.append((int(g),auxiliar)) 
+    return auxiliar_2
 
 
 def pregunta_08():
@@ -174,7 +301,27 @@ def pregunta_08():
     ]
 
     """
-    return
+    # ejercicio numero 8
+    def leer_archivo(file_name):
+        with open(file_name, "r") as f:
+            lines = f.readlines()
+            lines=[line.replace('\n','')for line in lines]
+        return [line.split("\t") for line in lines]
+    informacion=leer_archivo("data.csv")
+    lista=list()
+    contador=0
+    for i in range(0,len(informacion)):
+        lista.append(informacion[i][1])
+    elementos=sorted(set(lista))
+    auxiliar_2=list()
+    for g in elementos:
+        auxiliar=list()
+        for j in range(0,len(informacion)):
+            if g==informacion[j][1]:
+                if g not in auxiliar:
+                    auxiliar.append(informacion[j][0])
+        auxiliar_2.append((int(g),sorted(set(auxiliar)))) 
+    return auxiliar_2
 
 
 def pregunta_09():
@@ -197,7 +344,29 @@ def pregunta_09():
     }
 
     """
-    return
+    # ejercicio numero 9
+    def leer_archivo(file_name):
+        with open(file_name, "r") as f:
+            lines = f.readlines()
+            lines=[line.replace('\n','')for line in lines]
+        return [line.split("\t") for line in lines]
+    informacion=leer_archivo("data.csv")
+    lista_2=list()
+    contador=list()
+    for k in range(0,len(informacion)):
+        lista=[informacion[k][4].replace(',',':').split(':')[index] for index in range(0,len(informacion[k][4].replace(',',':').split(':')),2)]
+        for i in range(0,len(lista)):
+            lista_2.append(lista[i])
+    elementos=sorted(set(lista_2))
+    auxiliar_2=dict()
+    for k in elementos:
+        contador=0
+        for j in range(0,len(informacion)):
+            lista=informacion[j][4].replace(',',':').split(':')
+            if k in lista:
+                contador+=1
+        auxiliar_2[k]=contador
+    return auxiliar_2
 
 
 def pregunta_10():
@@ -218,7 +387,17 @@ def pregunta_10():
 
 
     """
-    return
+    # ejercicio numero 10
+    def leer_archivo(file_name):
+        with open(file_name, "r") as f:
+            lines = f.readlines()
+            lines=[line.replace('\n','')for line in lines]
+        return [line.split("\t") for line in lines]
+    informacion=leer_archivo("data.csv")
+    lista=list()
+    for i in range(0,len(informacion)):
+        lista.append((informacion[i][0],len(informacion[i][3].split(',')),len(informacion[i][4].split(','))))
+    return lista
 
 
 def pregunta_11():
@@ -239,7 +418,29 @@ def pregunta_11():
 
 
     """
-    return
+    # ejercicio numero 11
+    def leer_archivo(file_name):
+        with open(file_name, "r") as f:
+            lines = f.readlines()
+            lines=[line.replace('\n','')for line in lines]
+        return [line.split("\t") for line in lines]
+    informacion=leer_archivo("data.csv")
+    lista_2=list()
+    contador=list()
+    for k in range(0,len(informacion)):
+        lista=informacion[k][3].split(',')
+        for i in range(0,len(lista)):
+            lista_2.append(lista[i])
+    elementos=sorted(set(lista_2))
+    auxiliar_2=dict()
+    for k in elementos:
+        contador=0
+        for j in range(0,len(informacion)):
+            lista=informacion[j][3].split(',')
+            if k in lista:
+                contador+=int(informacion[j][1])
+        auxiliar_2[k]=contador
+    return auxiliar_2
 
 
 def pregunta_12():
@@ -257,4 +458,25 @@ def pregunta_12():
     }
 
     """
-    return
+    # ejercicio numero 12
+    def leer_archivo(file_name):
+        with open(file_name, "r") as f:
+            lines = f.readlines()
+            lines=[line.replace('\n','')for line in lines]
+        return [line.split("\t") for line in lines]
+    informacion=leer_archivo("data.csv")
+    lista=list()
+    contador=0
+    for i in range(0,len(informacion)):
+        lista.append(informacion[i][0])
+    elementos=sorted(set(lista))
+    auxiliar_2=dict()
+    for k in elementos:
+        contador=0
+        for j in range(0,len(informacion)):
+            if k==informacion[j][0]:
+                lista=informacion[j][4].replace(',',':').split(':')
+                for m in range(1,len(lista),2):
+                    contador+=int(lista[m])
+        auxiliar_2[k]=contador
+    return auxiliar_2
